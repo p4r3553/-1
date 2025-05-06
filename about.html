@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Paresse</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* Dark Theme Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: row; /* Sidebar and content side by side */
+      justify-content: space-between; /* Makes sure there's space between the content and the sidebar */
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    main.content {
+      flex: 2;
+      padding: 20px;
+      background: #1f1f1f;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1, h2 {
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 30px;
+      border-bottom: 2px solid #f4a261;
+      padding-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .bio, .professional-qualities, .hobbies, .goals {
+      margin-bottom: 30px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 250px;
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: #e76f51;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #ddd;
+      font-size: 1.2rem;
+      margin: 10px 0;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #e76f51;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: #ddd;
+      margin: 0 15px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e76f51;
+    }
+
+    /* Animation */
+    .bio p, .professional-qualities ul, .hobbies ul, .goals p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .bio p:nth-child(2),
+    .professional-qualities ul li:nth-child(1),
+    .hobbies ul li:nth-child(1),
+    .goals p:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .bio p:nth-child(3),
+    .professional-qualities ul li:nth-child(2),
+    .hobbies ul li:nth-child(2),
+    .goals p:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .bio p:nth-child(4),
+    .professional-qualities ul li:nth-child(3),
+    .hobbies ul li:nth-child(3),
+    .goals p:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    .bio p:nth-child(5),
+    .professional-qualities ul li:nth-child(4),
+    .hobbies ul li:nth-child(4),
+    .goals p:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+
+    .bio p:nth-child(6),
+    .professional-qualities ul li:nth-child(5),
+    .hobbies ul li:nth-child(5),
+    .goals p:nth-child(6) {
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+    }
+    #cat-gif {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 150px;
+  z-index: 10;
+  background-color: rgba(18, 18, 18, 0.8); /* Fond semi-transparent, couleur similaire à celle du fond */
+  border-radius: 8px; /* Bords arrondis */
+  padding: 5px; /* Un peu d'espace autour du GIF */
+}
+#cat-gif-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#cat-gif {
+  max-width: 120px;
+}
+
+/* Message du chat */
+#cat-message {
+  display: none;
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  background: #222;
+  color: #e0e0e0;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+/* Curseur personnalisé */
+body.cat-mode {
+  background-color: #2a1f2d; /* Un violet doux type "chat magique" */
+  cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto; /* Sac de croquettes (icône flaticon) */
+  transition: background-color 0.5s ease;
+}
+.cursor-blur {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  z-index: 9999;
+  filter: blur(8px);
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+}
+
+.cursor-blur.delay-1 {
+  transition: transform 0.15s linear;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cursor-blur.delay-2 {
+  transition: transform 0.25s linear;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="content">
+      <h1>About Me</h1>
+
+      <section class="bio">
+        <h2></h2>
+        <p>Hello! I'm Paresse, a student in Network and Telecommunication. I have a passion for technology, and I aim to make a difference in the tech industry with my skills and knowledge.</p>
+      </section>
+
+      <section>
+        <p> I am currently a student in <strong>Network and Telecommunications</strong>, a field that deeply fascinates me due to its crucial importance in our hyperconnected society. Through my studies, I have acquired solid skills in network infrastructure, communication protocols, and information system security. But beyond the technical side, what truly drives me is the more analytical and strategic aspect of cybersecurity. </p> <p> This is what led me to delve into <strong>OSINT</strong> (Open Source Intelligence), a fascinating field that involves collecting and analyzing publicly available information to detect potential threats, understand malicious behaviors, or protect organizations against various attacks. I am also very interested in the field of <strong>Threat Intelligence</strong>, where monitoring, anticipation, and threat analysis play a key role in the proactive defense of information systems. </p> <p> My natural curiosity and analytical mindset have driven me to explore these areas independently by taking specialized courses and earning several <strong>recognized certifications</strong>, which I share further down. I see cybersecurity as a constantly evolving field, where staying up to date, continuous learning, and self-reflection are essential. </p>
+      </section>
+      
+      <section class="hobbies">
+        <h2>My Passion</h2>
+        <h3>What drives me every day</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; flex-direction: column;">
+          <p>
+            I have a deep passion for cybersecurity, especially when it comes to OSINT (Open Source Intelligence) and SIGINT (Signals Intelligence). There's something truly fascinating about uncovering hidden truths using only publicly available information or digital signals. 
+          </p>
+          <p>
+            OSINT is a field that constantly challenges me to think critically and creatively. Whether it's digging through obscure metadata, analyzing online behavior, or connecting digital footprints, I love the thrill of discovering what others often overlook. On the other hand, SIGINT takes that curiosity to another level — exploring the world of intercepted communications and signal analysis teaches me how vital and powerful information really is.
+          </p>
+          <p>
+            Outside of the digital world, I have a genuine love for animals. Their presence grounds me — they remind me of balance, calm, and the importance of empathy. Whether it's caring for pets or just spending time observing animals in nature, it's a part of my life that brings clarity and peace, especially when things get intense in the cyber realm.
+          </p>
+          <p>
+            For me, cybersecurity isn’t just a job or a hobby — it’s a mindset. It’s about being curious, analytical, ethical, and always ready to learn. Pairing that with my care for animals and the natural world creates a balance that keeps me motivated and focused, both personally and professionally.
+          </p>
+        </div>
+      </section>
+      
+      
+
+      <section class="hobbies">
+        <h2>Mes Certifications</h2>
+        <h3></h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <a href=" " class="cert-btn">CSNA(in progress)</a>
+          <a href=" " class="cert-btn">CCNAv2 </a>
+          <a href=" " class="cert-btn">Ethical hacking</a>
+          <a href=" " class="cert-btn">CDSA(in progress)</a>
+          <a href=" " class="cert-btn"></a>
+          <a href=" " class="cert-btn"></a>
+          <a href=" " class="cert-btn"></a>
+        </div>
+      </section>
+
+      <section class="goals">
+        <h2>My Curiculum vitae</h2>
+        <a href="cv" class="cert-btn">curiculum vitae</a>
+      </section>
+
+    </main>
+
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/siteweb2/assets/uwu.png" alt="">
+        <h1><br>Paresse</h1>
+        <p>Student in Network and Telecommunication</p>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="wu.html">WU</a>
+      </nav>  
+      <div class="social-icons">
+        <a href="https://github.com/p4r3553"><i class="fab fa-github"></i></a>
+        <a href="https://www.root-me.org/Paresse1"><i class="fas fa-skull-crossbones"></i></a>
+
+        <a href="https://x.com/p4r3553"><i class="fab fa-twitter"></i></a>
+      </div>
+    </aside>
+
+    <img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat bougeant sa queue" id="cat-gif" />
+
+  </div>
+  <div id="cat-gif-container" onclick="catMode()">
+    <img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat" id="cat-gif" />
+  </div>
+  
+  <div id="cat-message">miaou miaou je suis affamé</div>
+  <div class="cursor-blur"></div>
+  <div class="cursor-blur delay-1"></div>
+  <div class="cursor-blur delay-2"></div>
+  <script>
+    function catMode() {
+      // Affiche le message
+      const msg = document.getElementById('cat-message');
+      msg.style.display = 'block';
+    
+      // Active le mode chat
+      document.body.classList.add('cat-mode');
+    
+      // Cache le message après 3 secondes
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 3000);
+    }
+    const cursors = document.querySelectorAll('.cursor-blur');
+
+document.addEventListener('mousemove', (e) => {
+  cursors.forEach((cursor, index) => {
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  });
+});
+    </script>
+
+    
+</body>
+</html>

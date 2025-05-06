@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* Dark Theme Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    main.content {
+      flex: 2;
+      padding: 20px;
+      background: #1f1f1f;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1, h2 {
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 30px;
+      border-bottom: 2px solid #f4a261;
+      padding-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .bio, .professional-qualities, .hobbies, .goals {
+      margin-bottom: 30px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 250px;
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: #e76f51;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #ddd;
+      font-size: 1.2rem;
+      margin: 10px 0;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #e76f51;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: #ddd;
+      margin: 0 15px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e76f51;
+    }
+
+    .post {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+      cursor: pointer;
+    }
+
+    .post:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .post:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .post:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .post-content {
+      display: none;
+      padding-top: 10px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .post-content.show {
+      display: block;
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #cat-gif-static {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      max-width: 150px;
+      z-index: 10;
+      background-color: rgba(18, 18, 18, 0.8);
+      border-radius: 8px;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    #cat-gif-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #cat-gif-btn {
+      max-width: 120px;
+    }
+
+    #cat-message {
+      display: none;
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      background: #222;
+      color: #e0e0e0;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
+    body.cat-mode {
+      background-color: #2a1f2d;
+      cursor: url('/siteweb2/assets/croquettes.png'), auto;
+      transition: background-color 0.5s ease;
+    }
+
+    .download-buttons {
+      margin-top: 10px;
+    }
+
+    .download-buttons .btn {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 6px 12px;
+      background-color: #444;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .download-buttons .btn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="content">      
+      <section class="ctf-writeup">
+        <article class="post" onclick="togglePostContent(1)">
+          <h3>CTF – Codfest</h3>
+          <div class="meta">
+            <span></span> | <span></span>
+          </div>
+          <p>Résumé rapide Chall Osint Code Fest</p>
+          <div class="post-content">
+            <p>Voici un petit résumé plus détaillé...</p>
+          </div>
+          <div class="download-buttons">
+            <a href="assets/zz.pdf" download class="btn">📕 Télécharger .pdf</a>
+          </div>
+        </article>
+      </section>
+    </main> 
+
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/siteweb2/assets/uwu.png" alt="">
+        <h1><br>Paresse</h1>
+        <p>Student in Network and Telecommunication</p>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="wu.html">WU</a>
+      </nav>
+      <div class="social-icons">
+        <a href="https://github.com/p4r3553"><i class="fab fa-github"></i></a>
+        <a href="https://www.root-me.org/Paresse1"><i class="fas fa-skull-crossbones"></i></a>
+        <a href="https://x.com/p4r3553"><i class="fab fa-twitter"></i></a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Cat GIF Static -->
+  <div id="cat-gif-container" onclick="catMode()">
+    <img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat" id="cat-gif-static" />
+  </div>
+
+  <!-- Cat Message -->
+  <div id="cat-message">miaou miaou je suis affamé</div>
+
+  <!-- Scripts -->
+  <script>
+    function catMode() {
+      const msg = document.getElementById('cat-message');
+      msg.style.display = 'block';
+      document.body.classList.add('cat-mode');
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 3000);
+    }
+
+    function togglePostContent(index) {
+      const posts = document.querySelectorAll('.post-content');
+      posts.forEach((post, i) => {
+        if (i === index - 1) {
+          post.classList.toggle('show');
+        } else {
+          post.classList.remove('show');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
