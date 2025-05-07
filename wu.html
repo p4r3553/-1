@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    /* Dark Theme Styles */
+    /* DARK THEME STYLES — inchangés */
+
     body {
       font-family: 'Arial', sans-serif;
       background-color: #121212;
@@ -105,7 +106,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 20px;
     }
 
     .menu a {
@@ -138,35 +138,61 @@
       color: #e76f51;
     }
 
-    .post {
+    .cert-btn {
+      background-color: #e76f51;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .cert-btn:hover {
+      background-color: #f4a261;
+    }
+
+    /* Animation */
+    .bio p, .professional-qualities ul, .hobbies ul, .goals p {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 1s forwards;
-      cursor: pointer;
     }
 
-    .post:nth-child(1) {
+    .bio p:nth-child(2),
+    .professional-qualities ul li:nth-child(1),
+    .hobbies ul li:nth-child(1),
+    .goals p:nth-child(2) {
       animation-delay: 0.2s;
     }
 
-    .post:nth-child(2) {
+    .bio p:nth-child(3),
+    .professional-qualities ul li:nth-child(2),
+    .hobbies ul li:nth-child(2),
+    .goals p:nth-child(3) {
       animation-delay: 0.4s;
     }
 
-    .post:nth-child(3) {
+    .bio p:nth-child(4),
+    .professional-qualities ul li:nth-child(3),
+    .hobbies ul li:nth-child(3),
+    .goals p:nth-child(4) {
       animation-delay: 0.6s;
     }
 
-    .post-content {
-      display: none;
-      padding-top: 10px;
-      opacity: 0;
-      transition: opacity 0.5s;
+    .bio p:nth-child(5),
+    .professional-qualities ul li:nth-child(4),
+    .hobbies ul li:nth-child(4),
+    .goals p:nth-child(5) {
+      animation-delay: 0.8s;
     }
 
-    .post-content.show {
-      display: block;
-      opacity: 1;
+    .bio p:nth-child(6),
+    .professional-qualities ul li:nth-child(5),
+    .hobbies ul li:nth-child(5),
+    .goals p:nth-child(6) {
+      animation-delay: 1s;
     }
 
     @keyframes fadeInUp {
@@ -176,27 +202,11 @@
       }
     }
 
-    #cat-gif-static {
+    #cat-gif, #cat-gif-container {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      max-width: 150px;
-      z-index: 10;
-      background-color: rgba(18, 18, 18, 0.8);
-      border-radius: 8px;
-      padding: 5px;
-      cursor: pointer;
-    }
-
-    #cat-gif-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      cursor: pointer;
       z-index: 999;
-    }
-
-    #cat-gif-btn {
       max-width: 120px;
     }
 
@@ -216,50 +226,95 @@
 
     body.cat-mode {
       background-color: #2a1f2d;
-      cursor: url('/siteweb2/assets/croquettes.png'), auto;
+      cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto;
       transition: background-color 0.5s ease;
     }
 
-    .download-buttons {
-      margin-top: 10px;
+    .cursor-blur {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      pointer-events: none;
+      z-index: 9999;
+      filter: blur(8px);
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s linear;
     }
 
-    .download-buttons .btn {
-      display: inline-block;
-      margin-right: 10px;
-      padding: 6px 12px;
-      background-color: #444;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
+    .cursor-blur.delay-1 {
+      transition: transform 0.15s linear;
+      background: rgba(255, 255, 255, 0.10);
     }
 
-    .download-buttons .btn:hover {
-      background-color: #666;
+    .cursor-blur.delay-2 {
+      transition: transform 0.25s linear;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    /* --- Responsive Design --- */
-    @media (max-width: 768px) {
+    /* --- RESPONSIVE --- */
+
+    @media (max-width: 1024px) {
       .container {
         flex-direction: column;
         padding: 10px;
       }
 
       .sidebar {
-        position: static;
+        position: relative;
         width: 100%;
+        top: 0;
+        right: 0;
         margin-bottom: 20px;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
       }
 
-      .logo img {
-        max-width: 80px;
+      .logo {
+        margin-bottom: 10px;
       }
 
-      .logo h1 {
-        font-size: 1.5rem;
+      .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
+      .menu a {
+        margin: 5px 10px;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .cert-btn {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      .sidebar {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
       .menu a {
         font-size: 1rem;
       }
@@ -269,43 +324,21 @@
         margin: 0 10px;
       }
 
-      main.content {
-        flex: 1;
-        padding: 15px;
-      }
-
-      #cat-gif-static {
-        max-width: 100px;
-        bottom: 10px;
-        right: 10px;
+      #cat-gif {
+        max-width: 80px;
       }
 
       #cat-message {
         bottom: 120px;
-        right: 10px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        padding: 8px 10px;
+      }
+
+      .cursor-blur {
+        display: none;
       }
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      .post p,
-      .post-content p {
-        font-size: 0.95rem;
-      }
-
-      .download-buttons .btn {
-        font-size: 0.9rem;
-        padding: 5px 10px;
-      }
-    }
   </style>
 </head>
 <body>
