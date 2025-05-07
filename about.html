@@ -6,8 +6,10 @@
   <title>About Me | Paresse</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- ... Ton <head> reste inchangé jusqu'à la balise <style> ... -->
   <style>
-    /* Dark Theme Styles */
+    /* DARK THEME STYLES — inchangés */
+
     body {
       font-family: 'Arial', sans-serif;
       background-color: #121212;
@@ -15,10 +17,11 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       display: flex;
-      flex-direction: row; /* Sidebar and content side by side */
-      justify-content: space-between; /* Makes sure there's space between the content and the sidebar */
+      flex-direction: row;
+      justify-content: space-between;
       max-width: 1200px;
       margin: auto;
       padding: 20px;
@@ -136,6 +139,21 @@
       color: #e76f51;
     }
 
+    .cert-btn {
+      background-color: #e76f51;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .cert-btn:hover {
+      background-color: #f4a261;
+    }
+
     /* Animation */
     .bio p, .professional-qualities ul, .hobbies ul, .goals p {
       opacity: 0;
@@ -183,77 +201,148 @@
         opacity: 1;
         transform: translateY(0);
       }
-      
     }
-    #cat-gif {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  max-width: 150px;
-  z-index: 10;
-  background-color: rgba(18, 18, 18, 0.8); /* Fond semi-transparent, couleur similaire à celle du fond */
-  border-radius: 8px; /* Bords arrondis */
-  padding: 5px; /* Un peu d'espace autour du GIF */
-}
-#cat-gif-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 999;
-}
 
-#cat-gif {
-  max-width: 120px;
-}
+    #cat-gif, #cat-gif-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      max-width: 120px;
+    }
 
-/* Message du chat */
-#cat-message {
-  display: none;
-  position: fixed;
-  bottom: 160px;
-  right: 20px;
-  background: #222;
-  color: #e0e0e0;
-  padding: 10px 15px;
-  border-radius: 12px;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  z-index: 999;
-}
+    #cat-message {
+      display: none;
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      background: #222;
+      color: #e0e0e0;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      z-index: 999;
+    }
 
-/* Curseur personnalisé */
-body.cat-mode {
-  background-color: #2a1f2d; /* Un violet doux type "chat magique" */
-  cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto; /* Sac de croquettes (icône flaticon) */
-  transition: background-color 0.5s ease;
-}
-.cursor-blur {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  pointer-events: none;
-  z-index: 9999;
-  filter: blur(8px);
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s linear;
-}
+    body.cat-mode {
+      background-color: #2a1f2d;
+      cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto;
+      transition: background-color 0.5s ease;
+    }
 
-.cursor-blur.delay-1 {
-  transition: transform 0.15s linear;
-  background: rgba(255, 255, 255, 0.10);
-}
+    .cursor-blur {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      pointer-events: none;
+      z-index: 9999;
+      filter: blur(8px);
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s linear;
+    }
 
-.cursor-blur.delay-2 {
-  transition: transform 0.25s linear;
-  background: rgba(255, 255, 255, 0.05);
-}
+    .cursor-blur.delay-1 {
+      transition: transform 0.15s linear;
+      background: rgba(255, 255, 255, 0.10);
+    }
 
+    .cursor-blur.delay-2 {
+      transition: transform 0.25s linear;
+      background: rgba(255, 255, 255, 0.05);
+    }
 
+    /* --- RESPONSIVE --- */
+
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .logo {
+        margin-bottom: 10px;
+      }
+
+      .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .menu a {
+        margin: 5px 10px;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .cert-btn {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      .sidebar {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu a {
+        font-size: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.2rem;
+        margin: 0 10px;
+      }
+
+      #cat-gif {
+        max-width: 80px;
+      }
+
+      #cat-message {
+        bottom: 120px;
+        font-size: 0.8rem;
+        padding: 8px 10px;
+      }
+
+      .cursor-blur {
+        display: none;
+      }
+    }
 
   </style>
+<!-- le reste de ton HTML ne change pas -->
+
 </head>
 <body>
   <div class="container">
