@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
+    /* DARK THEME STYLES — inchangés */
+
     body {
       font-family: 'Arial', sans-serif;
       background-color: #121212;
@@ -57,6 +59,20 @@
       color: #ddd;
     }
 
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .bio, .professional-qualities, .hobbies, .goals {
+      margin-bottom: 30px;
+    }
+
     .sidebar {
       position: fixed;
       top: 20px;
@@ -90,7 +106,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 20px;
     }
 
     .menu a {
@@ -123,50 +138,61 @@
       color: #e76f51;
     }
 
-    .portfolio-content .tab-content {
-      margin-bottom: 40px;
+    .cert-btn {
+      background-color: #e76f51;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s;
     }
 
-    .project {
-      background-color: #2a2a2a;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 30px 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease, background-color 0.3s ease;
+    .cert-btn:hover {
+      background-color: #f4a261;
+    }
+
+    /* Animation */
+    .bio p, .professional-qualities ul, .hobbies ul, .goals p {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 1s forwards;
-      cursor: pointer;
     }
 
-    .project:nth-child(1) { animation-delay: 0.2s; }
-    .project:nth-child(2) { animation-delay: 0.4s; }
-    .project:nth-child(3) { animation-delay: 0.6s; }
-
-    .project:hover {
-      transform: translateY(-3px);
-      background-color: #333;
+    .bio p:nth-child(2),
+    .professional-qualities ul li:nth-child(1),
+    .hobbies ul li:nth-child(1),
+    .goals p:nth-child(2) {
+      animation-delay: 0.2s;
     }
 
-    .project h3 {
-      color: #f4a261;
-      margin-top: 0;
+    .bio p:nth-child(3),
+    .professional-qualities ul li:nth-child(2),
+    .hobbies ul li:nth-child(2),
+    .goals p:nth-child(3) {
+      animation-delay: 0.4s;
     }
 
-    .view-project {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #e76f51;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
+    .bio p:nth-child(4),
+    .professional-qualities ul li:nth-child(3),
+    .hobbies ul li:nth-child(3),
+    .goals p:nth-child(4) {
+      animation-delay: 0.6s;
     }
 
-    .view-project:hover {
-      background-color: #d45d3c;
+    .bio p:nth-child(5),
+    .professional-qualities ul li:nth-child(4),
+    .hobbies ul li:nth-child(4),
+    .goals p:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+
+    .bio p:nth-child(6),
+    .professional-qualities ul li:nth-child(5),
+    .hobbies ul li:nth-child(5),
+    .goals p:nth-child(6) {
+      animation-delay: 1s;
     }
 
     @keyframes fadeInUp {
@@ -176,23 +202,12 @@
       }
     }
 
-    #cat-gif-static {
+    #cat-gif, #cat-gif-container {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      max-width: 120px;
-      z-index: 10;
-      background-color: rgba(18, 18, 18, 0.8);
-      border-radius: 8px;
-      padding: 5px;
-    }
-
-    #cat-gif-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      cursor: pointer;
       z-index: 999;
+      max-width: 120px;
     }
 
     #cat-message {
@@ -211,9 +226,119 @@
 
     body.cat-mode {
       background-color: #2a1f2d;
-      cursor: url('/siteweb2/assets/croquettes.png'), auto;
+      cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto;
       transition: background-color 0.5s ease;
     }
+
+    .cursor-blur {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      pointer-events: none;
+      z-index: 9999;
+      filter: blur(8px);
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s linear;
+    }
+
+    .cursor-blur.delay-1 {
+      transition: transform 0.15s linear;
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .cursor-blur.delay-2 {
+      transition: transform 0.25s linear;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* --- RESPONSIVE --- */
+
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .logo {
+        margin-bottom: 10px;
+      }
+
+      .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .menu a {
+        margin: 5px 10px;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .cert-btn {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      .sidebar {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu a {
+        font-size: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.2rem;
+        margin: 0 10px;
+      }
+
+      #cat-gif {
+        max-width: 80px;
+      }
+
+      #cat-message {
+        bottom: 120px;
+        font-size: 0.8rem;
+        padding: 8px 10px;
+      }
+
+      .cursor-blur {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 <body>
