@@ -163,15 +163,53 @@
       }
     }
 
+    /* --- Responsive Design --- */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
+        padding: 10px;
       }
 
       .sidebar {
         position: static;
         width: 100%;
         margin-bottom: 20px;
+      }
+
+      .logo img {
+        max-width: 80px;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+      }
+
+      .menu a {
+        font-size: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.2rem;
+        margin: 0 8px;
+      }
+
+      main.content {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .post {
+        padding: 15px;
+      }
+
+      .post h3 {
+        font-size: 1.2rem;
+      }
+
+      .download-buttons .btn {
+        font-size: 0.9rem;
+        padding: 8px 14px;
       }
     }
   </style>
@@ -180,7 +218,6 @@
   <div class="container">
     <main class="content">
       <section class="ctf-writeup">
-        <!-- Exemple d’article -->
         <article class="post" onclick="togglePostContent(this)">
           <h3>tool-Ashitaka</h3>
           <p>Script Vm</p>
@@ -216,26 +253,25 @@
       </section>
     </main>
 
-
     <aside class="sidebar">
-        <div class="logo">
-          <img src="/siteweb2/assets/uwu.png" alt="">
-          <h1><br>Paresse</h1>
-          <p> </p>
-        </div>
-        <nav class="menu">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="wu.html">WU</a>
-        </nav>
-        <div class="social-icons">
-          <a href="https://github.com/p4r3553"><i class="fab fa-github"></i></a>
-          <a href="https://www.root-me.org/Paresse1"><i class="fas fa-skull-crossbones"></i></a>
-          <a href="https://x.com/p4r3553"><i class="fab fa-twitter"></i></a>
-        </div>
-      </aside>
-    </div>
+      <div class="logo">
+        <img src="/siteweb2/assets/uwu.png" alt="">
+        <h1><br>Paresse</h1>
+        <p></p>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="wu.html">WU</a>
+      </nav>
+      <div class="social-icons">
+        <a href="https://github.com/p4r3553"><i class="fab fa-github"></i></a>
+        <a href="https://www.root-me.org/Paresse1"><i class="fas fa-skull-crossbones"></i></a>
+        <a href="https://x.com/p4r3553"><i class="fab fa-twitter"></i></a>
+      </div>
+    </aside>
+  </div>
 
   <script>
     function togglePostContent(postElement) {
