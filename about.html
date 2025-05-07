@@ -419,41 +419,6 @@
         <a href="https://x.com/p4r3553"><i class="fab fa-twitter"></i></a>
       </div>
     </aside>
-
-    <img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat bougeant sa queue" id="cat-gif" />
-
-  </div>
-  <div id="cat-gif-container" onclick="catMode()">
-    <img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat" id="cat-gif" />
-  </div>
-  
-  <div id="cat-message">miaou miaou je suis affamé</div>
-  <div class="cursor-blur"></div>
-  <div class="cursor-blur delay-1"></div>
-  <div class="cursor-blur delay-2"></div>
-  <script>
-    function catMode() {
-      // Affiche le message
-      const msg = document.getElementById('cat-message');
-      msg.style.display = 'block';
-    
-      // Active le mode chat
-      document.body.classList.add('cat-mode');
-    
-      // Cache le message après 3 secondes
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 3000);
-    }
-    const cursors = document.querySelectorAll('.cursor-blur');
-
-document.addEventListener('mousemove', (e) => {
-  cursors.forEach((cursor, index) => {
-    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-  });
-});
-    </script>
-
     
 </body>
 </html>
