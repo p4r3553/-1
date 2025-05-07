@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me | Paresse</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    /* Dark Theme Styles */
+    /* Styles principaux */
     body {
       font-family: 'Arial', sans-serif;
       background-color: #121212;
@@ -15,10 +15,11 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       display: flex;
-      flex-direction: row; /* Sidebar and content side by side */
-      justify-content: space-between; /* Makes sure there's space between the content and the sidebar */
+      flex-direction: row;
+      justify-content: space-between;
       max-width: 1200px;
       margin: auto;
       padding: 20px;
@@ -39,37 +40,19 @@
       font-weight: bold;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+    h1 { font-size: 2.5rem; margin-bottom: 20px; }
+    h2 { font-size: 1.5rem; margin-top: 30px; border-bottom: 2px solid #f4a261; padding-bottom: 10px; }
 
-    h2 {
-      font-size: 1.5rem;
-      margin-top: 30px;
-      border-bottom: 2px solid #f4a261;
-      padding-bottom: 10px;
-    }
-
-    p {
+    p, ul li {
       font-size: 1rem;
       line-height: 1.6;
       color: #ddd;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+    ul { list-style-type: none; padding: 0; }
+    ul li { margin-bottom: 10px; font-size: 1.1rem; }
 
-    ul li {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    .bio, .professional-qualities, .hobbies, .goals {
-      margin-bottom: 30px;
-    }
+    section { margin-bottom: 30px; }
 
     .sidebar {
       position: fixed;
@@ -136,7 +119,7 @@
       color: #e76f51;
     }
 
-    /* Animation */
+    /* Animations */
     .bio p, .professional-qualities ul, .hobbies ul, .goals p {
       opacity: 0;
       transform: translateY(20px);
@@ -146,37 +129,12 @@
     .bio p:nth-child(2),
     .professional-qualities ul li:nth-child(1),
     .hobbies ul li:nth-child(1),
-    .goals p:nth-child(2) {
-      animation-delay: 0.2s;
-    }
+    .goals p:nth-child(2) { animation-delay: 0.2s; }
 
     .bio p:nth-child(3),
     .professional-qualities ul li:nth-child(2),
     .hobbies ul li:nth-child(2),
-    .goals p:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    .bio p:nth-child(4),
-    .professional-qualities ul li:nth-child(3),
-    .hobbies ul li:nth-child(3),
-    .goals p:nth-child(4) {
-      animation-delay: 0.6s;
-    }
-
-    .bio p:nth-child(5),
-    .professional-qualities ul li:nth-child(4),
-    .hobbies ul li:nth-child(4),
-    .goals p:nth-child(5) {
-      animation-delay: 0.8s;
-    }
-
-    .bio p:nth-child(6),
-    .professional-qualities ul li:nth-child(5),
-    .hobbies ul li:nth-child(5),
-    .goals p:nth-child(6) {
-      animation-delay: 1s;
-    }
+    .goals p:nth-child(3) { animation-delay: 0.4s; }
 
     @keyframes fadeInUp {
       to {
@@ -184,53 +142,42 @@
         transform: translateY(0);
       }
     }
+
+    /* Mode chat */
+    #cat-gif-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
     #cat-gif {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  max-width: 150px;
-  z-index: 10;
-  background-color: rgba(18, 18, 18, 0.8); /* Fond semi-transparent, couleur similaire à celle du fond */
-  border-radius: 8px; /* Bords arrondis */
-  padding: 5px; /* Un peu d'espace autour du GIF */
-}
-#cat-gif-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 999;
-}
+      max-width: 120px;
+      border-radius: 8px;
+      background-color: rgba(18, 18, 18, 0.8);
+      padding: 5px;
+    }
 
-#cat-gif {
-  max-width: 120px;
-}
+    #cat-message {
+      display: none;
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      background: #222;
+      color: #e0e0e0;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      z-index: 999;
+    }
 
-/* Message du chat */
-#cat-message {
-  display: none;
-  position: fixed;
-  bottom: 160px;
-  right: 20px;
-  background: #222;
-  color: #e0e0e0;
-  padding: 10px 15px;
-  border-radius: 12px;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  z-index: 999;
-}
-
-/* Curseur personnalisé */
-body.cat-mode {
-  background-color: #2a1f2d; /* Un violet doux type "chat magique" */
-  cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto; /* Sac de croquettes (icône flaticon) */
-  transition: background-color 0.5s ease;
-}
-
-
-
-
+    body.cat-mode {
+      background-color: #2a1f2d;
+      cursor: url('/siteweb2/assets/Capture\ d’écran\ du\ 2025-04-09\ 01-26-59.png'), auto;
+      transition: background-color 0.5s ease;
+    }
   </style>
 </head>
 <body>
@@ -240,7 +187,7 @@ body.cat-mode {
 
       <section class="bio">
         <h2>Who Am I?</h2>
-        <p>Hello! I'm Paresse a student in Network and Telecommunication. I have a passion for Cybersecurity, and I aim to make a difference in the tech industry with my skills and knowledge.</p>
+        <p>Hello! I'm Paresse, a student in Network and Telecommunication. I have a passion for Cybersecurity, and I aim to make a difference in the tech industry with my skills and knowledge.</p>
       </section>
 
       <section class="professional-qualities">
@@ -248,33 +195,29 @@ body.cat-mode {
         <ul>
           <li><strong>Network Design:</strong> Proficient in creating scalable network infrastructures.</li>
           <li><strong>Cybersecurity:</strong> Knowledge of implementing security measures to protect networks and data.</li>
-          <li><strong>Programming:</strong> Skilled in Python, html, CSS</li>
-          <li><strong>Communication:</strong> Able to effectively communicate technical information (IT vocabulary) </li>
+          <li><strong>Programming:</strong> Skilled in Python, HTML, CSS.</li>
+          <li><strong>Communication:</strong> Able to effectively communicate technical information (IT vocabulary).</li>
         </ul>
-
-
       </section>
 
       <section class="hobbies">
         <h2>My Hobbies</h2>
         <p>Outside of my academic and professional interests, I have a wide range of hobbies that help me unwind and stay creative:</p>
         <ul>
-          <li><strong>Music:</strong> I love listening to all kinds of artists, and my favorite playlists include rap and classical music.
-          Music is very important to me; I listen to it every day. </li>
-          <li><strong>Sport:</strong>I practice cycling and swimming regularly, which allows me to release pressure and maintain a source of relaxation. </li>
-          </ul>
+          <li><strong>Music:</strong> I love listening to all kinds of artists, and my favorite playlists include rap and classical music.</li>
+          <li><strong>Sport:</strong> I practice cycling and swimming regularly, which allows me to release pressure and maintain a source of relaxation.</li>
+        </ul>
       </section>
 
       <section class="goals">
         <h2>My Goals</h2>
         <p>In the future, I hope to play an active role in the evolution of technology. My goal is to achieve an advanced level of expertise in networking and cybersecurity in order to join a company as a consultant. I am motivated by a constant desire to learn, to take on technical challenges, and to contribute to the security and performance of IT systems.</p>
       </section>
-
     </main>
 
     <aside class="sidebar">
       <div class="logo">
-        <img src="/siteweb2/assets/uwu.png" alt="">
+        <img src="/siteweb2/assets/uwu.png" alt="Logo">
         <h1><br>Paresse</h1>
         <p>Student in Network and Telecommunication</p>
       </div>
@@ -287,32 +230,26 @@ body.cat-mode {
       <div class="social-icons">
         <a href="https://github.com/p4r3553"><i class="fab fa-github"></i></a>
         <a href="https://www.root-me.org/Paresse1"><i class="fas fa-skull-crossbones"></i></a>
-
         <a href="https://x.com/p4r3553"><i class="fab fa-twitter"></i></a>
       </div>
     </aside>
   </div>
+
+  <!-- Cat mode elements -->
   <div id="cat-gif-container" onclick="catMode()">
     <img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat" id="cat-gif" />
   </div>
-  
   <div id="cat-message">miaou miaou je suis affamé</div>
+
   <script>
     function catMode() {
-      // Affiche le message
       const msg = document.getElementById('cat-message');
       msg.style.display = 'block';
-    
-      // Active le mode chat
       document.body.classList.add('cat-mode');
-    
-      // Cache le message après 3 secondes
       setTimeout(() => {
         msg.style.display = 'none';
       }, 3000);
     }
-    </script>
+  </script>
 </body>
-
-<img src="https://media1.tenor.com/m/uhbdLc4oYmcAAAAC/cat.gif" alt="Chat bougeant sa queue" id="cat-gif" />
 </html>
